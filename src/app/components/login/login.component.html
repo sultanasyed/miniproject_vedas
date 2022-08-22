@@ -1,0 +1,94 @@
+<!-- 
+<body>
+<div class="text-center bg-light p-3">
+   <mat-card class="my-card">
+      <mat-card-content>
+         <form class="my-form">
+            <h1>Login</h1>
+
+            <mat-form-field class="form-group email" appearance="outline">
+               <mat-label>Email</mat-label>
+               <input  type="email" name="email" placeholder="E-mail"> 
+            </mat-form-field>
+
+            <mat-form-field class="form-group email" appearance="outline">
+               <mat-label>Password</mat-label>
+               <input type="Password" name="Password" placeholder="Password"> 
+            </mat-form-field>
+            
+            <mat-form-field class="reset-psw" appearance="outline">
+               <a href="#">Forgot Password ?</a>
+              </mat-form-field>
+
+           <mat-card-actions>
+               <button class="login-btn" mat-raised-button  color="danger">LOGIN</button>
+            </mat-card-actions> 
+
+            <span> <button mat-button color="accent">Login success !!</button></span>
+
+            <mat-form-field class="signup">Don't have an account yet! 
+               <a class="text-primary" href="#">SIGN UP</a> 
+            </mat-form-field>
+
+            <mat-form-field class="p1">OR
+               <BR>Login With
+            </mat-form-field>
+
+            <div class="row">
+               <mat-form-field class="col" >
+                  <button class="social-btn">f  Facebook</button>    
+                  <button class="social-btn1">G  Google </button>  
+               </mat-form-field>
+            </div>
+         </form>
+        </mat-card-content>
+     </mat-card>
+</div> -->
+
+
+<div class="container-fluid ps-md-0">
+   <div class="row g-0">
+     <div class="d-none d-md-flex col-md-4 col-sm-14"></div>
+     <div class="col-md-8 col-lg-6">
+       <div class="login d-flex align-items-center py-5">
+         <div class="container">
+           <div class="row">
+             <div class="col-md-9 col-lg-8 mx-auto">
+               <h3 class="login-heading mb-4 text-center"> Login</h3>
+ 
+               <!-- Sign In Form -->
+               <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                 <div class="form-floating mb-3">
+                   <input type="email" class="form-control" id="floatingInput" formControlName="email" placeholder="name@example.com" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"  id="inputEmail4">
+                   <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                     <div *ngIf="f.email.errors.required">Email is required</div>
+                     <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                  </div>
+                   <label for="floatingInput">Email address</label>
+                 </div>
+                 <div class="form-floating mb-3">
+                   <input type="password" class="form-control" id="floatingPassword"  placeholder="Password" formControlName="password"[ngClass]="{ 'is-invalid': submitted && f.password.errors }" id="inputPassword4">
+                   <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                     <div *ngIf="f.password.errors.required">Password is required</div>
+                  </div>
+                   <label for="floatingPassword">Password</label>
+                 </div>
+ 
+                 <div class="d-grid">
+                   <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Sign in</button>
+                  </div>
+               </form>
+               <div class="text-center">
+                  <span class="hover" (click)="OpenForgotPwd()" >Forgot your password?</span>
+                </div><br/>
+               <div>
+                  <button class="social-btn">f  Facebook</button>    
+                  <button class="social-btn1">G  Google </button> 
+                 </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>

@@ -1,0 +1,36 @@
+
+<div class="container">
+    <h5 class="text-center p-1">
+        Forgot Password
+      <span class="float-right hover text-right" (click)="closeTab()">
+        <img
+          width="40"
+          style="border-radius: 50%; padding: 10px"
+          src=".../../../assets/x-mark.png"
+        />
+      </span>
+    </h5>
+  
+    <form [formGroup]="RequestResetForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="Email">Enter EmailID:</label> <br />
+        <input
+          placeholder="Ex. mailto:pat@example.com"
+          type="text"
+          formControlName="Email"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && officialEmail.errors }"
+        />
+        <div *ngIf="officialEmail.errors"> 
+          <div *ngIf="officialEmail.errors.required">
+              Official Email required.
+          </div> 		   
+          <div *ngIf="officialEmail.errors.pattern">
+              Official Email not valid.
+          </div> 
+       </div> 
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>

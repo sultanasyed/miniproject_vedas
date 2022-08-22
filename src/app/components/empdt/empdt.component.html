@@ -1,0 +1,134 @@
+<div class="container center">
+  <form [formGroup]="EmpForm" (ngSubmit)="SaveForm()">
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Email</label>
+      <input type="email" class="form-control" formControlName="Email"
+        placeholder="name@example.com">
+    </div>
+
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">DOJ</label><br />
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="doj">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group" >
+      <mat-label>Gender : </mat-label><br/>
+      <mat-radio-group aria-label="Select an option" formControlName="gender">
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="Female">Female</mat-radio-button>
+      </mat-radio-group> 
+      </div>
+
+
+    <div class="form-group">
+      <label for="address" class="col-sm-2 col-form-label">Address</label>
+      <div class="col-sm-10">
+        <select class="form-select" aria-label="Default select example" formControlName="address" >
+          
+          <option [ngValue]="null" disabled>Select State</option>
+          <option *ngFor="let st of states;" [value]="st">{{st}}</option>      
+        </select>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="ename" class="col-sm-2 col-form-label">Resume</label>
+      <div class="col-sm-10">
+        <div class="image-preview mb-3" *ngIf="url">
+          <img src="{{ url}}">
+        </div>
+        <div class="form-group">
+          <input type="file" name="resume" accept=".pdf,.docs" (change)="onselectFile($event)" />
+        </div>
+        <div *ngIf="upload">
+          Upload progress: {{ upload }}
+        </div>
+      </div>
+    </div>
+
+  </form>
+  
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-dark me-md-2" type="submit" (click)="SaveForm()">Submit</button>
+  </div>
+</div>
+
+<div class="container-fluid centerbtn">
+
+  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+    <button type="button" class="btn btn-danger" (click)="selectOption(true)">Table</button>
+    <button type="button" class="btn btn-warning" (click)="selectOption(false)">Card</button>
+  </div>
+</div>
+
+<div class="table" *ngIf="isTable">
+  <table class="center table-striped">
+    <tr>
+      <th>Emp ID</th>
+      <th>EMail ID</th>
+      <th>DateOfJoining</th>
+      <th>Gender</th>
+      <th>Address</th>
+      <th>Resume </th>
+      <th>Action </th>
+    </tr>
+    <tr *ngFor="let emp of EmpInfo; let i = index">
+      <td>{{emp.Empid}}</td>
+      <td>{{emp.EmailId}}</td>
+      <td>{{emp.dateofjoin}}</td>
+      <td>{{emp.gender}}</td>
+      <td>{{emp.address}}</td>
+      <td>{{emp.resume}}</td>
+      <td><button class="btn btn-primary" (click)="Updt(emp)">Update</button>
+        &nbsp;
+         <button class="btn btn-secondary" (click)="Del(emp)">Delete</button></td>
+    </tr>
+  </table>
+</div>
+
+<!-- <div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div class="row" *ngIf="!isTable">
+      <mat-card class="example-card" style="width:15rem; background-color: cadetblue;"
+        *ngFor="let emp of EmpInfo let i=index">
+        <mat-card-content>
+          Emp ID: {{ emp.Empid}}
+        </mat-card-content>
+        <mat-card-content>
+          Email ID : {{emp.EmailId}}
+        </mat-card-content>
+        <mat-card-content>DateOfJoining:{{emp.dateofjoin}}</mat-card-content>
+        <mat-card-content>Gender:{{emp.gender}}</mat-card-content>
+        <mat-card-content>Address:{{emp.address}}</mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="container-fluid">
+<div class="row p-0"> -->
+  <div class="container">
+      <div class="row p-2"  *ngFor="let row of splitEmpInfo; let i = index"> 
+          <div class="col p-2" id="rcorners2" *ngFor="let emp of splitEmpInfo[i]">
+          <p style="border: 2px solid bg-red; text-align:center"><strong>
+            Emp ID: {{ emp.Empid}}<br/>Email ID : {{emp.EmailId}}<br/>
+              <!-- <img src= "../../../assets/icons8-ads-100.png" alt="" width="60pixles" height="50pixles"><br/> -->
+              <span>DateOfJoining:{{emp.dateofjoin}}</span><br/>
+              <span>Gender:{{emp.gender}}</span><br/>
+              <span >Address:{{emp.address}}</span><br/>
+              <span><button type="button" class="btn btn-primary btn-sm" 
+                style="text-decoration: underline;" (click)="Updt(emp)">Update </button>&nbsp;&nbsp;
+                <button type="button" class="btn btn-primary btn-sm" 
+                style="text-decoration: underline;" (click)="Del(emp)">Delete </button>
+              </span></strong>
+          </p>
+        </div>            
+      </div>
+  </div>
+<!-- </div>
+</div> -->

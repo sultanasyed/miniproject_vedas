@@ -1,0 +1,54 @@
+
+<div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light bg-success">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+       <span><img src="./assets/startaskerLogo.png" style="height:30px; width:150px;">
+      </span>
+    </a>
+   
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"          
+            [routerLink]="['/homepage']"
+            routerLinkActive="active" style="color:whitesmoke"
+            >Home
+            </a>   
+        </li>
+        <li class="nav-item">
+           <a class="nav-link active" aria-current="page"       
+            (click)="EmpDetails()" style="color:whitesmoke"
+            >EmpDetails
+            </a>   
+        </li>
+        </ul></div>
+        <div class="topnav-right">
+          <a            
+            [routerLink]="['/changepassword']"
+            routerLinkActive="active"
+            *ngIf="isLogedin">ChangePassword
+             </a>
+          <span>   
+            
+            <a [routerLink]="['/login']" routerLinkActive="active" class="hover" *ngIf="!isLogedin" >Login</a>
+            <a class="hover" [routerLink]="['/signup']" routerLinkActive="active" *ngIf="!isLogedin">/Sign up</a>
+            <span click="click" *ngIf="isLogedin" ></span>
+            &nbsp;<a button class="hover" *ngIf="isLogedin" (click)="Logout()">SignOut</a>
+          </span>  
+          <span class="hover" *ngIf="isLogedin">
+            <img
+              src="{{ baseurl }}"
+              width="50"
+              height="50"
+              style="border-radius: 50%; border: 1px solid #0ab4ff"
+            />          
+          </span>
+          &nbsp;
+        </div>
+  
+  </div>
+</nav>
+</div>
+
+<router-outlet></router-outlet>

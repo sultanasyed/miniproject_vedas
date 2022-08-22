@@ -1,0 +1,34 @@
+<div class="container height-100 d-flex justify-content-center align-items-center">
+  <div class="position-relative">
+    <div class="card  text-center">
+      <h5>Please enter the one time password  to verify your account
+      <span class="float-right hover text-right" (click)="closeTab()">
+          <img
+            width="40"
+            style="border-radius: 50%; padding: 10px"
+            src=".../../../assets/x-mark.png"
+          />
+        </span></h5>
+      <div> <span>A code has been sent to your Register Email ID</span>
+      </div>
+      <form [formGroup]="OtpForm" (ngSubmit)="SaveForm()">
+      <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
+        <input class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1"  formControlName="one"/>
+        <input class="m-2 text-center form-control rounded" type="text" id="second" maxlength="1" formControlName="two"/>
+        <input class="m-2 text-center form-control rounded" type="text" id="third" maxlength="1" formControlName="three" />
+        <input class="m-2 text-center form-control rounded" type="text" id="fourth" maxlength="1" formControlName="four"/>
+      </div>
+
+      <div class="mt-4">
+        <button class="btn btn-danger px-4 validate">Validate</button>
+      </div>
+    </form>
+    </div>
+    <div class="card-2">
+      <div class="content d-flex justify-content-center align-items-center">
+        <span>Didn't get the code</span>
+        <a class="px-4 validate hover" (click)="ResendOTP()">ResendOTP</a>        
+      </div>
+    </div>
+  </div> 
+</div>
